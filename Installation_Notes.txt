@@ -1,0 +1,26 @@
+# Project Installation Guide
+
+## Step 1: Create a Virtual Environment
+Navigate to the project directory and run the following command to create a Conda environment named `text` with Python 3.10:
+
+		conda create -p text python=3.10 -y
+
+
+## Step 2: Activate the Virtual Environment
+After the environment is created, activate it using:
+
+		conda activate text/
+
+
+## Step 3: Install Required Dependencies
+Once the environment is activated, install all necessary dependencies using:
+
+		pip install -r requirements.txt
+
+
+## Step 4: Run Additional Commands
+Copy the contents of `note.txt`, paste them into the terminal, and execute them to complete the setup.
+
+---
+
+Now your environment is ready! 🚀 If you encounter any issues, ensure all dependencies are installed correctly before running the project.

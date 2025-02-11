@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OCR Extractor - Fullscreen</title>
+    <link rel="icon" href="images\favicon.png" type="image/x-icon">
+    <style>
+        /* Global styling */
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;  /* Ensure the height takes the full screen */
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center;     /* Center vertically */
+            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        /* Main container (centered content) */
+        #main-container {
+            display: flex;
+            width: 85%;
+            height: 85%;
+            justify-content: space-between;
+            box-sizing: border-box;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+
+        /* Left half (for drop area and browse button) */
+        #left-half {
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            /* border-right: 2px solid #e0e0e0; */
+        }
+
+        /* Right half (for output text area and export button) */
+        #right-half {
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Drop area styling */
+        #drop-area {
+            width: 100%;
+            height: 80%;
+            border: 3px dashed #4CAF50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            flex-direction: column;
+            position: relative;
+            border-radius: 10px;
+            background-color: #fafafa;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        #drop-area:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Output text area */
+        #output {
+    width: 80%;
+    height: 300px; /* Increased height */
+    margin-top: 20px;
+    resize: none;
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa;
+    display: flex;
+    justify-content: flex-start; /* Align text to the left */
+    align-items: flex-start; /* Align text to the top */
+    text-align: left; /* Ensure text is aligned to the left */
+    line-height: normal; /* Ensures text aligns properly */
+}
+        #output::placeholder {
+            text-align: center; /* Horizontally center the placeholder */
+            line-height: 150px; /* Vertically center the placeholder text */
+            color: #aaa;
+}
+
+        /* Button styling */
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        #browse-btn {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        #browse-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        #browse-btn:active {
+            transform: translateY(1px);
+        }
+
+        input[type="file"] {
+            display: none; /* Hide the default file input */
+        }
+
+        /* Tooltip for drag area */
+        #drop-area .tooltip {
+            font-size: 14px;
+            color: #888;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main container for the centered layout -->
+    <div id="main-container">
+        <!-- Left Half Section (Drop area and Browse button) -->
+        <div id="left-half">
+            <div id="drop-area">
+                <div>Drag and drop an image here</div>
+                <div class="tooltip">Or click below to browse files</div>
+            </div>
+            <!-- Browse button below the drop area -->
+            <button id="browse-btn">Browse</button>
+            <input type="file" id="file-input" accept="image/*" />
+        </div>
+
+        <!-- Right Half Section (Output text area and Export button) -->
+        <div id="right-half">
+            <textarea id="output" placeholder="Extracted text will appear here..."></textarea>
+            <button id="export-btn">Export</button>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
